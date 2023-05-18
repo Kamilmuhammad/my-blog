@@ -29,7 +29,7 @@ const Detail = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/comments?postId=${id}`)
+      .get(`https://db-json-blog.vercel.app/comments?postId=${id}`)
       .then((res) => {
         setComments(res.data);
         setCommentLoading(false);
@@ -46,7 +46,7 @@ const Detail = () => {
       alert("masukkan isi komentar");
     } else {
       axios
-        .post(`http://localhost:8080/comments/`, {
+        .post(`https://db-json-blog.vercel.app/comments/`, {
           postId: post.id,
           comment: commentText,
           user: session.user,

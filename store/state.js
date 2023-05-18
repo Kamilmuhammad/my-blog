@@ -6,7 +6,7 @@ export const useStore = create((set, get) => ({
   loading: true,
   getNews: (search = "") =>
     axios
-      .get(`http://localhost:8080/posts${search}`)
+      .get(`https://db-json-blog.vercel.app/posts${search}`)
       .then((res) => {
         set({ data: res.data, loading: false });
       })
