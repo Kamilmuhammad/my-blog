@@ -1,7 +1,7 @@
 import Layout from "@/components/layout";
 import React, { useState } from "react";
 import axios from "axios";
-import { useSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 
 function CreatePost() {
   const { data: session } = useSession();
@@ -43,7 +43,7 @@ function CreatePost() {
     }
     setEmpty(false);
     axios
-      .post("http://localhost:8080/posts", post)
+      .post("https://db-json-blog.vercel.app/posts", post)
       .then((res) => console.log(res))
       .catch((err) => console.log(err.message));
   };
@@ -119,3 +119,17 @@ function CreatePost() {
 }
 
 export default CreatePost;
+
+export const getServerSideProps = async (context) => {
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/login",
+      },
+    };
+  }
+  return {
+    props: { session },
+  };
+};
