@@ -51,8 +51,8 @@ function CreatePost() {
     <Layout>
       <div>
         <h1 className="text-2xl">Buat Blog Baru</h1>
-        <form className="space-y-2" onSubmit={handleSubmit}>
-          <div>
+        <form className="space-y-2" onSubmit={(e) => handleSubmit(e)}>
+          <div className="pt-4">
             <label htmlFor="category">Category</label>
             <input
               type="text"
@@ -90,7 +90,6 @@ function CreatePost() {
           <div>
             <label htmlFor="Description">Description</label>
             <input
-              type="text"
               id="Description"
               className="text-black px-2 py-1 ml-2"
               placeholder="Description"
